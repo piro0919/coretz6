@@ -1,0 +1,47 @@
+.wrapper {
+  display: grid;
+  position: relative;
+  @include mq.mq($until: tablet) {
+    grid-template: "header" auto "hr" auto "main" 1fr / 1fr;
+  }
+  @include mq.mq($from: tablet) {
+    grid-template: "header header" auto "sidebar hr" auto "sidebar main" 1fr / auto 1fr;
+  }
+}
+
+.headerWrapper {
+  backdrop-filter: blur(12px);
+  background: rgba(#fff, 0.9);
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.sidebarWrapper {
+  grid-area: sidebar;
+  position: sticky;
+  @include mq.mq($until: tablet) {
+    display: none;
+  }
+}
+
+.hr {
+  background: rgba(#333, 0.1);
+  border: 0;
+  grid-area: hr;
+  height: 1px;
+  position: sticky;
+  z-index: 1;
+}
+
+.main {
+  background: #f9f9f9;
+  grid-area: main;
+}
+
+.drawerWrapper {
+  @include mq.mq($from: desktop) {
+    display: none;
+  }
+}
